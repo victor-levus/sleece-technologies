@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { useInView } from '@/hooks/useInView'
+import { useSEO } from '@/hooks/useSEO'
 import HeroBackground from '@/components/layout/HeroBackground'
 import {
   Code2, Wifi, Zap, ShieldCheck, Cloud, Phone,
   Network, Lightbulb, Award, Clock, ThumbsUp,
-  ArrowRight, ChevronRight,
+  ArrowRight, ChevronRight, Star, Quote,
 } from 'lucide-react'
 
 const verticals = [
@@ -53,12 +54,47 @@ const stats = [
   { value: '10+', label: 'Sectors Covered' },
 ]
 
+const testimonials = [
+  {
+    quote:
+      'Sleece Technologies transformed our office network infrastructure in record time. Professional, thorough, and the result has been a 60% improvement in connectivity across all departments.',
+    name: 'Adebayo Okonkwo',
+    title: 'IT Manager',
+    company: 'First Federal Savings & Loans',
+    initials: 'AO',
+  },
+  {
+    quote:
+      'The solar and battery backup system they installed has virtually eliminated our dependence on the grid. Excellent engineering and outstanding post-installation support.',
+    name: 'Chinyere Eze',
+    title: 'Head of Operations',
+    company: 'Zenith Manufacturing Co.',
+    initials: 'CE',
+  },
+  {
+    quote:
+      'We engaged Sleece for a complete security systems overhaul — bollards, CCTV, and access control. Every system works flawlessly. Highly recommended for critical facilities.',
+    name: 'Musa Abdullahi',
+    title: 'Security Director',
+    company: 'Abuja Investment Holdings',
+    initials: 'MA',
+  },
+]
+
 const delays = ['delay-100', 'delay-200', 'delay-300', 'delay-400', 'delay-500', 'delay-600']
 
 export default function Home() {
+  useSEO({
+    title: 'ICT, Power & Engineering Solutions in Nigeria',
+    description:
+      'Sleece Technologies Limited delivers cutting-edge ICT infrastructure, power solutions, networking, and security systems across Nigeria.',
+    path: '/',
+  })
+
   const [verticalsRef, verticalsInView] = useInView()
   const [servicesRef, servicesInView] = useInView()
   const [valuesRef, valuesInView] = useInView()
+  const [testimonialsRef, testimonialsInView] = useInView()
   const [ctaRef, ctaInView] = useInView()
   const [statsRef, statsInView] = useInView()
 
@@ -214,6 +250,58 @@ export default function Home() {
                 </div>
                 <h4 className="font-bold text-brand-blue text-lg mb-2">{title}</h4>
                 <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonials ── */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div ref={testimonialsRef} className="text-center mb-14">
+            <span className={`text-brand-green text-sm font-semibold uppercase tracking-widest ${testimonialsInView ? 'animate-fade-in' : 'opacity-0'}`}>
+              Client Stories
+            </span>
+            <h2 className={`text-3xl sm:text-4xl font-bold text-brand-blue mt-2 ${testimonialsInView ? 'animate-fade-up delay-100' : 'opacity-0'}`}>
+              What Our Clients Say
+            </h2>
+            <p className={`text-gray-500 mt-4 max-w-xl mx-auto ${testimonialsInView ? 'animate-fade-up delay-200' : 'opacity-0'}`}>
+              Trusted by businesses and institutions across Nigeria to deliver on time and on budget.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+            {testimonials.map(({ quote, name, title, company, initials }, i) => (
+              <div
+                key={name}
+                className={`bg-brand-light rounded-2xl p-8 flex flex-col hover:shadow-md transition-shadow duration-300 ${testimonialsInView ? `animate-fade-up ${delays[i]}` : 'opacity-0'}`}
+              >
+                {/* Stars */}
+                <div className="flex gap-1 mb-5">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Star key={j} size={15} className="text-brand-green fill-brand-green" />
+                  ))}
+                </div>
+
+                {/* Quote icon */}
+                <Quote size={22} className="text-brand-green/40 mb-3" />
+
+                {/* Quote text */}
+                <p className="text-gray-600 text-sm leading-relaxed flex-1 italic">
+                  "{quote}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-3 mt-7 pt-6 border-t border-gray-200">
+                  <div className="w-10 h-10 rounded-full bg-brand-blue flex items-center justify-center text-white text-xs font-bold shrink-0">
+                    {initials}
+                  </div>
+                  <div>
+                    <p className="font-semibold text-brand-blue text-sm">{name}</p>
+                    <p className="text-gray-400 text-xs">{title} · {company}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

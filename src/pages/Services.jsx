@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { useInView } from '@/hooks/useInView'
+import { useSEO } from '@/hooks/useSEO'
 import HeroBackground from '@/components/layout/HeroBackground'
 import { services, categories } from '@/data/services'
 import { CheckCircle2, ArrowRight } from 'lucide-react'
@@ -51,11 +52,28 @@ function ServiceCard({ service, index, inView }) {
           ))}
         </ul>
       </div>
+
+      {/* Learn More link */}
+      <div className="px-7 pb-7">
+        <Link
+          to={`/services/${service.id}`}
+          className="inline-flex items-center gap-1.5 text-brand-green text-sm font-semibold hover:text-brand-green-dark transition-colors"
+        >
+          Learn More <ArrowRight size={14} />
+        </Link>
+      </div>
     </div>
   )
 }
 
 export default function Services() {
+  useSEO({
+    title: 'Our Services',
+    description:
+      'Explore Sleece Technologies services — software development, ICT infrastructure, power solutions, networking, security systems, and consulting.',
+    path: '/services',
+  })
+
   const [activeCategory, setActiveCategory] = useState('All')
   const [heroRef, heroInView] = useInView()
   const [filterRef, filterInView] = useInView()

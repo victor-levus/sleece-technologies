@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useInView } from "@/hooks/useInView";
+import { useSEO } from "@/hooks/useSEO";
 import HeroBackground from "@/components/layout/HeroBackground";
 import {
 	MapPin,
@@ -77,6 +78,13 @@ export default function Contact() {
 		subject: "",
 		message: "",
 	});
+
+	useSEO({
+		title: 'Contact Us',
+		description:
+			'Get in touch with Sleece Technologies Limited. Request a quote, book a consultation, or ask about our ICT, power, and engineering services.',
+		path: '/contact',
+	})
 
 	const [heroRef, heroInView] = useInView();
 	const [formSectionRef, formInView] = useInView();
@@ -267,7 +275,8 @@ export default function Contact() {
 												value={form.name}
 												onChange={handleChange}
 												required
-												className="border-gray-200 focus-visible:ring-brand-green h-11"
+												disabled={status === 'sending'}
+												className="border-gray-200 focus-visible:ring-brand-green h-11 disabled:opacity-60"
 											/>
 										</div>
 										<div className="space-y-1.5">
@@ -285,7 +294,8 @@ export default function Contact() {
 												value={form.email}
 												onChange={handleChange}
 												required
-												className="border-gray-200 focus-visible:ring-brand-green h-11"
+												disabled={status === 'sending'}
+												className="border-gray-200 focus-visible:ring-brand-green h-11 disabled:opacity-60"
 											/>
 										</div>
 									</div>
@@ -306,7 +316,8 @@ export default function Contact() {
 												placeholder="+234 800 000 0000"
 												value={form.phone}
 												onChange={handleChange}
-												className="border-gray-200 focus-visible:ring-brand-green h-11"
+												disabled={status === 'sending'}
+												className="border-gray-200 focus-visible:ring-brand-green h-11 disabled:opacity-60"
 											/>
 										</div>
 										<div className="space-y-1.5">
@@ -322,7 +333,8 @@ export default function Contact() {
 												value={form.subject}
 												onChange={handleChange}
 												required
-												className="flex h-11 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green text-gray-700"
+												disabled={status === 'sending'}
+												className="flex h-11 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green text-gray-700 disabled:opacity-60 disabled:cursor-not-allowed"
 											>
 												<option value="" disabled>
 													Select a subject
@@ -352,7 +364,8 @@ export default function Contact() {
 											onChange={handleChange}
 											required
 											rows={6}
-											className="border-gray-200 focus-visible:ring-brand-green resize-none"
+											disabled={status === 'sending'}
+											className="border-gray-200 focus-visible:ring-brand-green resize-none disabled:opacity-60"
 										/>
 									</div>
 

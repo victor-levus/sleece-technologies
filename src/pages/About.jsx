@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { useInView } from '@/hooks/useInView'
+import { useSEO } from '@/hooks/useSEO'
 import HeroBackground from '@/components/layout/HeroBackground'
 import {
   Lightbulb, ShieldCheck, Users, Star,
@@ -61,6 +62,13 @@ const expertise = [
 const delays = ['delay-100', 'delay-200', 'delay-300', 'delay-400', 'delay-500', 'delay-600']
 
 export default function About() {
+  useSEO({
+    title: 'About Us',
+    description:
+      'Learn about Sleece Technologies Limited — our story, mission, values, and the multidisciplinary team behind Nigeria\'s trusted ICT and engineering partner.',
+    path: '/about',
+  })
+
   const [heroRef, heroInView] = useInView()
   const [storyRef, storyInView] = useInView()
   const [mvRef, mvInView] = useInView()

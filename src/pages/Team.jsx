@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { useInView } from '@/hooks/useInView'
+import { useSEO } from '@/hooks/useSEO'
 import HeroBackground from '@/components/layout/HeroBackground'
 import { team } from '@/data/team'
 import { Linkedin, Twitter, ArrowRight } from 'lucide-react'
@@ -71,6 +72,13 @@ function TeamCard({ member, index, inView }) {
 }
 
 export default function Team() {
+  useSEO({
+    title: 'Our Team',
+    description:
+      'Meet the leadership team at Sleece Technologies Limited — experienced professionals driving ICT, power, and engineering excellence across Nigeria.',
+    path: '/team',
+  })
+
   const [heroRef, heroInView] = useInView()
   const [teamRef, teamInView] = useInView()
   const [valuesRef, valuesInView] = useInView()
