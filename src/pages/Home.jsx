@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { useInView } from '@/hooks/useInView'
+import HeroBackground from '@/components/layout/HeroBackground'
 import {
   Code2, Wifi, Zap, ShieldCheck, Cloud, Phone,
   Network, Lightbulb, Award, Clock, ThumbsUp,
@@ -65,20 +66,9 @@ export default function Home() {
     <div className="min-h-screen">
 
       {/* ── Hero ── */}
-      <section
-        className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{ backgroundColor: '#000066' }}
-      >
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
-            backgroundSize: '32px 32px',
-          }}
-        />
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#000066] to-transparent" />
+      <HeroBackground className="min-h-screen flex items-center justify-center">
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        <div className="max-w-5xl mx-auto px-6 py-24 text-center">
           {/* Badge */}
           <div className="animate-fade-in delay-100 inline-flex items-center gap-2 bg-white/10 text-white/80 text-xs font-medium px-4 py-1.5 rounded-full mb-8 border border-white/20">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-green animate-pulse" />
@@ -124,7 +114,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </HeroBackground>
 
       {/* ── What We Do ── */}
       <section className="py-20 bg-brand-light">

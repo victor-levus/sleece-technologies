@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { useInView } from '@/hooks/useInView'
+import HeroBackground from '@/components/layout/HeroBackground'
 import {
   Lightbulb, ShieldCheck, Users, Star,
   Target, Eye, ArrowRight,
@@ -71,17 +72,8 @@ export default function About() {
     <div className="min-h-screen">
 
       {/* ── Page Hero ── */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#000066' }}>
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
-            backgroundSize: '32px 32px',
-          }}
-        />
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#000066] to-transparent" />
-
-        <div ref={heroRef} className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <HeroBackground className="py-24">
+        <div ref={heroRef} className="max-w-4xl mx-auto px-6 text-center">
           <span className={`text-brand-green text-sm font-semibold uppercase tracking-widest ${heroInView ? 'animate-fade-in' : 'opacity-0'}`}>
             Who We Are
           </span>
@@ -93,7 +85,7 @@ export default function About() {
             committed to powering digital transformation across Nigeria and beyond.
           </p>
         </div>
-      </section>
+      </HeroBackground>
 
       {/* ── Company Story ── */}
       <section className="py-20 bg-white">
