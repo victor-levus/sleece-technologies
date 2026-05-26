@@ -4,6 +4,8 @@ import Footer from '@/components/layout/Footer'
 import Home from '@/pages/Home'
 import About from '@/pages/About'
 import Services from '@/pages/Services'
+import Contact from '@/pages/Contact'
+import Team from '@/pages/Team'
 
 function Layout({ children }) {
   return (
@@ -25,8 +27,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/team" element={<div className="p-8">Team — coming soon</div>} />
-          <Route path="/contact" element={<div className="p-8">Contact — coming soon</div>} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </Layout>
     </BrowserRouter>
