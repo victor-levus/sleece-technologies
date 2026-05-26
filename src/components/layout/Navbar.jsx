@@ -35,18 +35,18 @@ export default function Navbar() {
 					<Link
 						to="/"
 						onClick={handleLinkClick}
-						className="flex items-center gap-1 no-underline"
+						className="flex items-center no-underline"
 					>
 						<img
 							src={logo}
 							alt="Sleece Technologies Logo"
 							className="h-20 w-auto object-contain"
 						/>
-						<div className="flex flex-col leading-none">
-							<span className="text-brand-blue font-bold text-lg tracking-wide">
+						<div className="flex flex-col leading-none mb-3">
+							<span className="font-logo text-brand-blue font-bold text-lg tracking-widest">
 								SLEECE
 							</span>
-							<span className="text-brand-green text-sm tracking-widest font-bold">
+							<span className="font-logo text-brand-green text-[16px] tracking-[0.2em] font-bold">
 								TECHNOLOGIES
 							</span>
 						</div>

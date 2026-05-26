@@ -38,9 +38,9 @@ Colors are declared in `src/index.css` under `@theme`. Never use raw hex values 
 
 ## Typography
 
-- **Font:** Plus Jakarta Sans (Google Fonts, loaded in `index.html`)
+- **Body font:** Plus Jakarta Sans (Google Fonts, loaded in `index.html`) — weights 300–800
+- **Logo font:** Orbitron (Google Fonts, loaded in `index.html`) — applied via `.font-logo` CSS class on all logo wordmarks (Navbar + Footer)
 - **Base size:** `18px` (set on `html` in `index.css`)
-- **Weights used:** 300, 400, 500, 600, 700, 800
 
 ## Project Structure
 
@@ -53,8 +53,8 @@ sleece-tech/
 │   │   └── logo.png              # Company logo (green spider-web icon)
 │   ├── components/
 │   │   ├── layout/
-│   │   │   ├── Navbar.jsx        # Fixed top nav — white bg, logo, 5 links, mobile menu
-│   │   │   ├── Footer.jsx        # Brand blue footer — logo, links, contact, socials
+│   │   │   ├── Navbar.jsx        # Fixed top nav — white bg, logo (h-20), Orbitron wordmark, 5 links, mobile menu
+│   │   │   ├── Footer.jsx        # Brand blue footer — logo (h-14), Orbitron wordmark, links, contact, socials
 │   │   │   └── HeroBackground.jsx # Shared hero bg — gradient + orbs + circuit grid
 │   │   └── ui/                   # shadcn/ui components (do not hand-edit)
 │   │       ├── button.jsx
@@ -64,7 +64,8 @@ sleece-tech/
 │   │       ├── badge.jsx
 │   │       └── separator.jsx
 │   ├── data/
-│   │   └── services.js           # 9 service categories + categories[] filter array
+│   │   ├── services.js           # 9 service categories + categories[] filter array
+│   │   └── team.js               # Team members array — add new members here
 │   ├── hooks/
 │   │   └── useInView.js          # IntersectionObserver hook for scroll animations
 │   ├── lib/
@@ -73,12 +74,14 @@ sleece-tech/
 │   │   ├── Home.jsx              # COMPLETE
 │   │   ├── About.jsx             # COMPLETE
 │   │   ├── Services.jsx          # COMPLETE
-│   │   ├── Team.jsx              # PENDING
-│   │   └── Contact.jsx           # PENDING
+│   │   ├── Team.jsx              # COMPLETE
+│   │   └── Contact.jsx           # COMPLETE
 │   ├── App.jsx                   # BrowserRouter + Layout wrapper + all routes
 │   ├── main.jsx                  # React entry point
 │   └── index.css                 # Global styles, @theme tokens, keyframes, font-size
-├── index.html                    # Plus Jakarta Sans font link
+├── public/
+│   └── favicon.png               # Browser tab icon (copy of src/assets/logo.png)
+├── index.html                    # Plus Jakarta Sans font link + favicon
 ├── vite.config.js                # Vite + React plugin + Tailwind v4 + @ alias
 ├── jsconfig.json                 # Path alias @/ → src/
 └── components.json               # shadcn/ui config
@@ -160,14 +163,24 @@ Layers (bottom to top): dark navy→indigo gradient → green glow orb (top-left
 - Services Grid: 9 cards from `src/data/services.js` — each has icon, category badge, title, description, checklist of sub-services. Filters live on tab click.
 - CTA Banner: dark blue rounded card
 
-### `/team` — Our Team (PENDING)
-- Grid of team member cards
-- Data from `src/data/team.js` (to be created)
+### `/team` — Our Team (COMPLETE)
+- Hero: HeroBackground, "Meet Our Team"
+- Leadership Grid: Victor Umedum (CEO) + Eugene Ezeimo (COO) — initials avatars, role badge, bio, social links
+- Culture Strip: brand blue band — Innovation, Integrity, Excellence
+- CTA: links to /contact and /about
+- To add more members: edit `src/data/team.js` (grid auto-scales)
 
-### `/contact` — Contact Us (PENDING)
-- Contact form wired to EmailJS
-- Contact info sidebar
-- Google Maps placeholder
+### `/contact` — Contact Us (COMPLETE)
+- Hero: HeroBackground, "Contact Us"
+- Contact Info sidebar: Office, Phone, Email, Business Hours cards + social icons panel
+- Contact Form: Full Name, Email, Phone, Subject (dropdown), Message — EmailJS wired, success/error states
+- Google Maps embed (Abuja/FCT area)
+
+## Favicon
+
+- File: `public/favicon.png` (copy of the company logo)
+- Referenced in `index.html` as `<link rel="icon" type="image/png" href="/favicon.png" />`
+- To update: replace `public/favicon.png` with a new image
 
 ## Contact Info
 
@@ -175,9 +188,18 @@ Layers (bottom to top): dark navy→indigo gradient → green glow orb (top-left
 - **Phone:** +234 803 0724 271
 - **Address:** Plot 2157 B07 Cadastral Zone, Kamtape, Abuja FCT, Nigeria
 
-## EmailJS Setup (Contact Page — Pending)
+## Team Members
 
-Requires a free account at emailjs.com. Once set up, add to `src/pages/Contact.jsx`:
+| Name | Role |
+|---|---|
+| Victor Umedum | Chief Executive Officer (CEO) |
+| Eugene Ezeimo | Chief Operating Officer (COO) |
+
+To add members, append to the `team` array in `src/data/team.js`.
+
+## EmailJS (Contact Form — Active)
+
+Credentials are already configured in `src/pages/Contact.jsx`. To update:
 
 ```js
 const EMAILJS_SERVICE_ID  = 'your_service_id'

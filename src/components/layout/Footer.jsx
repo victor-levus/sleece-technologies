@@ -45,17 +45,17 @@ export default function Footer() {
 					{/* Brand column */}
 					<div className="lg:col-span-1">
 						{/* Logo */}
-						<Link to="/#" className="flex items-center gap-2 no-underline mb-4">
+						<Link to="/#" className="flex items-center no-underline mb-4">
 							<img
 								src={logo}
 								alt="Sleece Technologies Logo"
 								className="h-14 w-auto object-contain"
 							/>
-							<div className="flex flex-col leading-none">
-								<span className="text-gray-400 font-bold text-lg tracking-wide">
+							<div className="flex flex-col leading-none mb-3">
+								<span className="font-logo text-zinc-300 font-bold text-base tracking-widest">
 									SLEECE
 								</span>
-								<span className="text-brand-green text-sm tracking-widest font-bold">
+								<span className="font-logo text-brand-green text-[12px] tracking-[0.2em] font-bold">
 									TECHNOLOGIES
 								</span>
 							</div>
